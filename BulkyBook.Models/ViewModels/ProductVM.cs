@@ -10,7 +10,7 @@ namespace BulkyBook.Models.ViewModels
     public class ProductVM
     {
 
-       public Product product { get; set; }
+       public Product Product { get; set; }
         //projection for dropdown list 
        public IEnumerable<SelectListItem> CategoryList { get; set; }
        public IEnumerable<SelectListItem> CoverTypeList { get; set; }

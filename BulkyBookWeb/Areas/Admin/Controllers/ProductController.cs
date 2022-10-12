@@ -28,7 +28,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
         {
             ProductVM productVM = new()
             {
-                product = new(),
+                Product = new(),
                 CategoryList = _unitOfWork.Category.GetAll().Select(i => new SelectListItem
                 {
                     Text = i.Name,
