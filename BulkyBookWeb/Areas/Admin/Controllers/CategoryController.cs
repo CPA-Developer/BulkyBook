@@ -3,7 +3,7 @@ using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BulkyBookWeb.Controllers
+namespace BulkyBookWeb.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
@@ -19,11 +19,11 @@ namespace BulkyBookWeb.Controllers
             IEnumerable<Category> objCategoryList = _unitOfWork.Category.GetAll();
             return View(objCategoryList);
         }
-        
+
         //GET
         public IActionResult Create()
         {
-           
+
             return View();
         }
 
@@ -32,7 +32,7 @@ namespace BulkyBookWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
-            if(obj.Name == obj.DisplayOrder.ToString())
+            if (obj.Name == obj.DisplayOrder.ToString())
             {
                 ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
             }
@@ -49,14 +49,14 @@ namespace BulkyBookWeb.Controllers
         //GET
         public IActionResult Edit(int? id)
         {
-            if(id == null || id == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
             //var categoryFromDb = _db.Categories.Find(id);
             var categoryFromDb = _unitOfWork.Category.GetFirstOrDefault(c => c.Id == id);
             //var categoryFromDbSingle = _db.Categories.SingleOrDefault(c => c.Id == id);
-           if(categoryFromDb == null)
+            if (categoryFromDb == null)
             {
                 return NotFound();
             }
@@ -98,11 +98,11 @@ namespace BulkyBookWeb.Controllers
         }
 
         //POST
-        [HttpPost,ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)
         {
-           var obj = _unitOfWork.Category.GetFirstOrDefault(c => c.Id == id);
+            var obj = _unitOfWork.Category.GetFirstOrDefault(c => c.Id == id);
             if (obj == null) { return NotFound(); }
 
             _unitOfWork.Category.Remove(obj);
@@ -110,8 +110,8 @@ namespace BulkyBookWeb.Controllers
             _unitOfWork.Save();
             TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index");
-           
-           
+
+
         }
     }
 }
