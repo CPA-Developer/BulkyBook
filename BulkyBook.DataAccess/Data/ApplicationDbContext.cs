@@ -18,4 +18,5 @@ public class ApplicationDbContext :IdentityDbContext
 
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }   
     public DbSet<Company> Companies { get; set; }
+    public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 }
