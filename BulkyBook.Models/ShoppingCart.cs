@@ -22,5 +22,8 @@ namespace BulkyBook.Models
         [ForeignKey("ApplicationUserId")]
         [ValidateNever]
         public ApplicationUser ApplicationUser { get; set; }
+        //not to be mapped to the database
+        [NotMapped]
+        public double Price { get; set; }
     }
 }
