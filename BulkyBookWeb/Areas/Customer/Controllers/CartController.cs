@@ -134,7 +134,7 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
             {
 
                 //stripe Settings
-                var domain = "https://localhost:44326/";
+                var domain = "https://bulkybookwebapplication.azurewebsites.net/";
                 var options = new SessionCreateOptions
                 {
                     PaymentMethodTypes = new List<string>
